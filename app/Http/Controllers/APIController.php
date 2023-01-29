@@ -237,7 +237,7 @@ class APIController extends Controller
 
         if (!$data) return response()->json([
             'error' => true,
-            'message' => 'Product not found'
+            'message' => 'Article not found'
         ], 404);
 
         $data['image'] = asset('assets/images/' . $data['image']);
