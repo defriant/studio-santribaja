@@ -113,7 +113,7 @@ class APIController extends Controller
                 break;
 
             case 'article':
-                $desc = Description::where('target', 'category')->first();
+                $desc = Description::where('target', 'article')->first();
                 $data = Article::orderBy('created_at', 'DESC')->take(4)->get()->toArray();
                 $data = array_map(function ($v) {
                     $v['image'] = asset('assets/images/' . $v['image']);
