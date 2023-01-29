@@ -174,7 +174,7 @@ class DashboardController extends Controller
 
         $years = [];
 
-        $visitorFirstYear = Visitor::orderBy('created_at', 'DESC')->first()->created_at;
+        $visitorFirstYear = Visitor::orderBy('created_at')->first()->created_at;
         $visitorFirstYear = (int) date('Y', strtotime($visitorFirstYear));
         $currentYear = (int) date('Y');
 
