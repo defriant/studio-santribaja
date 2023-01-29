@@ -48,10 +48,13 @@ class GalleryController extends Controller
     {
         $gallery = Gallery::orderBy('created_at', 'DESC')->get();
 
+        $desc = Description::where('target', 'gallery')->first();
+        $desc['displayed'] = $desc['displayed'] ? true : false;
+
         $response = [
             "response" => "success",
             "data" => $gallery,
-            "description" => Description::where('target', 'gallery')->first()
+            "description" => $desc
         ];
 
         return response()->json($response);

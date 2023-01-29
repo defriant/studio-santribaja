@@ -51,6 +51,7 @@ class ProductController extends Controller
     {
         $data = Category::orderBy('created_at')->get();
         $desc = Description::where('target', 'category')->first();
+        $desc['displayed'] = $desc['displayed'] ? true : false;
 
         $response = [
             "response" => "success",

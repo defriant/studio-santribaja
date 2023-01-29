@@ -48,10 +48,13 @@ class ArticleController extends Controller
     {
         $data = Article::orderBy('created_at', 'DESC')->get();
 
+        $desc = Description::where('target', 'article')->first();
+        $desc['displayed'] = $desc['displayed'] ? true : false;
+
         $response = [
             "response" => "success",
             "data" => $data,
-            "description" => Description::where('target', 'article')->first()
+            "description" => $desc
         ];
 
         return response()->json($response);

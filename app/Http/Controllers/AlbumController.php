@@ -70,9 +70,12 @@ class AlbumController extends Controller
             ];
         }
 
+        $desc = Description::where('target', 'album')->first();
+        $desc['displayed'] = $desc['displayed'] ? true : false;
+
         $response = [
             "response" => "success",
-            "description" => Description::where('target', 'album')->first(),
+            "description" => $desc,
             "data" => $data
         ];
 
