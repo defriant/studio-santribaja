@@ -149,7 +149,12 @@ class APIController extends Controller
 
     public function categories()
     {
-        $data = Category::all();
+        $data = Category::all()->toArray();
+
+        $data = array_map(function ($v) {
+            $v['image'] = asset('assets/images/' . $v['image']);
+            return $v;
+        }, $data);
 
         return response()->json([
             'error' => false,
