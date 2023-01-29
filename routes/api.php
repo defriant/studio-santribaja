@@ -25,6 +25,15 @@ use App\Http\Controllers\DashboardController;
 Route::controller(APIController::class)->group(function () {
     Route::get('/company', 'company');
     Route::get('/home', 'home');
+    Route::get('/categories', 'categories');
+    Route::get('/products', 'products');
+    Route::get('/products/{id}', 'product_detail');
+    Route::get('/distributors', 'distributors');
+    Route::get('/articles', 'articles');
+    Route::get('/articles/{id}', 'article_detail');
+    Route::get('/galleries', 'galleries');
+    Route::get('/albums', 'albums');
+    Route::post('contact/send', 'add_mailbox');
 });
 
 Route::controller(DashboardController::class)->group(function () {
