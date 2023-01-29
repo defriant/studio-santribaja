@@ -8,7 +8,7 @@ $(window).on('load', function () {
     yearlyVisitor(_year)
     setInterval(() => {
         visitorUpdate()
-    }, 60000);
+    }, 10000);
 })
 
 function todayVisitor() {

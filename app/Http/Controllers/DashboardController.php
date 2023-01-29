@@ -62,7 +62,9 @@ class DashboardController extends Controller
 
         $visitors = Visitor::all();
         $firstVisitor = Visitor::orderBy('created_at', 'ASC')->first();
-        $daily = $this->createDateRange(date('Y-m-d', strtotime($firstVisitor->created_at)), date('Y-m-d'));
+        $firstVisitor = $firstVisitor ? date('Y-m-d H:i:s', strtotime($firstVisitor->created_at)) : date('2023-01-01 00:00:00');
+
+        $daily = $this->createDateRange(date('Y-m-d', strtotime($firstVisitor)), date('Y-m-d'));
 
         foreach ($visitors as $v) {
             $date = date('Y-m-d', strtotime($v->created_at));
@@ -174,7 +176,8 @@ class DashboardController extends Controller
 
         $years = [];
 
-        $visitorFirstYear = Visitor::orderBy('created_at')->first()->created_at;
+        $visitorFirstYear = Visitor::orderBy('created_at')->first();
+        $visitorFirstYear = $visitorFirstYear ? date('Y-m-d H:i:s', strtotime($visitorFirstYear->created_at)) : date('2023-01-01 00:00:00');
         $visitorFirstYear = (int) date('Y', strtotime($visitorFirstYear));
         $currentYear = (int) date('Y');
 
