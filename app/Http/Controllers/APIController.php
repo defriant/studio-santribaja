@@ -132,6 +132,7 @@ class APIController extends Controller
     public function home()
     {
         $main_banner = Banner::where('type', 'main_banner')->first();
+        $main_banner['filename'] = asset('assets/images/' . $main_banner['filename']);
         $rawSections = Section::orderBy('section_order')->get()->toArray();
 
         $sections = array_map(fn ($v) => $this->get_home_section($v), $rawSections);
