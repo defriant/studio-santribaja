@@ -64,7 +64,7 @@
             <input type="hidden" class="banner_order">
             <img src="{{ asset('assets/images/grey.jpg') }}" class="img-banner-modal">
             <div class="img-banner-tools">
-                <span>Resolusi gambar : 1000 x 500 (Pixel)</span>
+                <span>Minimum resolution : 1000 x 500 (Pixel)</span>
                 <button class="btn btn-warning" id="edit-banner-choose-file">Pilih file</button>
                 <input type="file" id="edit-banner-file" class="input-file-hidden">
                 <span class="img-file-invalid" id="edit-banner-file-invalid"><i class="far fa-info-circle"></i> Image resolution doesn't match</span>
@@ -85,7 +85,7 @@
             <input type="hidden" class="banner_order">
             <img src="{{ asset('assets/images/grey.jpg') }}" class="img-banner-modal">
             <div class="img-banner-tools">
-                <span>Resolusi gambar : 1000 x 240 (Pixel)</span>
+                <span>Minimum resolution : 1000 x 240 (Pixel)</span>
                 <button class="btn btn-warning" id="edit-child-banner-choose-file">Pilih file</button>
                 <input type="file" id="edit-child-banner-file" class="input-file-hidden">
                 <span class="img-file-invalid" id="edit-child-banner-file-invalid"><i class="far fa-info-circle"></i> Image resolution doesn't match</span>

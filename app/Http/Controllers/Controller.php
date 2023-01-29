@@ -120,4 +120,55 @@ class Controller extends BaseController
         }
         return $aryRange;
     }
+
+    public function validateRequest($request, $validator)
+    {
+        $errors = '';
+
+        function getArrayString($arr, $str)
+        {
+            foreach (explode('.', $str) as $key) {
+                if (!array_key_exists($key, $arr)) {
+                    return NULL;
+                }
+                $arr = $arr[$key];
+            }
+
+            return $arr;
+        }
+
+        foreach ($validator as $vKey => $vType) {
+            $errText = '';
+
+            if (!getArrayString($request, $vKey)) {
+                $errText .= "$vKey is required";
+            }
+
+            if ($vType !== 'any') {
+                if (getArrayString($request, $vKey)) {
+                    if (gettype(getArrayString($request, $vKey)) !== $vType) {
+                        $errText .= "$vKey must be type of $vType";
+                    }
+                } else {
+                    $errText .= " and must be type of $vType";
+                }
+            }
+
+            if ($errText) $errors ? $errors .= "|$errText" : $errors .= $errText;
+        }
+
+        if ($errors) return [
+            'failed' => true,
+            'response' => [
+                'error' => true,
+                'message' => 'Invalid payload',
+                'errors' => explode('|', $errors)
+            ],
+            'err_code' => 422
+        ];
+
+        return [
+            'failed' => false
+        ];
+    }
 }
