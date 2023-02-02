@@ -61,7 +61,7 @@ class InformationController extends Controller
     public function about_image_add(Request $request)
     {
         AboutImage::create([
-            'information_id' => 'santribajaindonesia',
+            'company_id' => 'santribajaindonesia',
             'filename' => $this->upload_image($request->image, '/assets/images/', 'about')
         ]);
 
