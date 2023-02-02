@@ -21,13 +21,13 @@ $(window).on('load', function () {
                     thisEl.attr('data-value', result)
                     postArticleValidate()
                 }
-            } else if (result == "invalid") {
-                alert(`Image resolution doesn't match`)
-                thisEl.attr('data-value', '')
-                thisEl.val('')
-                parent.children('.image-preview').attr('src', imgDefault)
-                postArticleValidate()
             }
+        }).catch(err => {
+            alert(err)
+            thisEl.attr('data-value', '')
+            thisEl.val('')
+            parent.children('.image-preview').attr('src', imgDefault)
+            postArticleValidate()
         })
     })
 
@@ -77,11 +77,11 @@ $(window).on('load', function () {
                     parent.children('.image-preview').attr('src', result)
                     thisEl.attr('data-value', result)
                 }
-            } else if (result == "invalid") {
-                alert(`Image resolution doesn't match`)
-                thisEl.attr('data-value', '')
-                thisEl.val('')
             }
+        }).catch(err => {
+            alert(err)
+            thisEl.attr('data-value', '')
+            thisEl.val('')
         })
     })
 

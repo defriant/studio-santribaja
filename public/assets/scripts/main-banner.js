@@ -25,7 +25,7 @@ $(window).on('load', function () {
 
     $('#main-banner-edit-file').on('change', function () {
         let file = this.files[0]
-        displayPreview(file, 1920, 1080).then(function (result) {
+        displayPreview(file, 1920, 1080, false).then(function (result) {
             if (result == "valid") {
                 let fileReader = new FileReader()
                 fileReader.readAsDataURL(file)
@@ -34,11 +34,8 @@ $(window).on('load', function () {
                     $('#img-main-banner').attr('src', result)
                     mainBannerImages = file
                 }
-            } else if (result == "invalid") {
-                alert(`Image resolution doesn't match`)
-                // $('#btn-save-banner-edit').attr('disabled', true)
             }
-        })
+        }).catch(err => alert(err))
     })
 
     $('#modalEditMainBanner').on('hide.bs.modal', function () {
@@ -56,6 +53,8 @@ $(window).on('load', function () {
             "description": $('#description').val()
         }
 
+        $('#btn-save-banner-edit').attr('disabled', true)
+
         function sendUpdate(data) {
             ajaxRequest.post({
                 "url": "/content-manager/main-banner/update",
@@ -67,6 +66,7 @@ $(window).on('load', function () {
                 }
                 toastr["success"](result.message)
                 getMainBannerData()
+                $('#btn-save-banner-edit').removeAttr('disabled')
             })
         }
 

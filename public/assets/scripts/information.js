@@ -35,7 +35,7 @@ $(window).on('load', function () {
                 })
 
                 if (formatValid == false) {
-                    alert('Format gambar tidak sesuai')
+                    alert('File format is not supported')
                 } else if (formatValid == true) {
                     let fileReader = new FileReader()
                     fileReader.readAsDataURL(file)
@@ -45,10 +45,8 @@ $(window).on('load', function () {
                         thisEl.attr('data-value', result)
                     }
                 }
-            } else if (result == "invalid") {
-                alert(`Image resolution doesn't match`)
             }
-        })
+        }).catch(err => alert(err))
     })
 
     $('#logo').on('change', function () {
@@ -134,13 +132,13 @@ $(window).on('load', function () {
                     thisEl.attr('data-value', result)
                     addAboutImageValidation()
                 }
-            } else if (result == "invalid") {
-                alert(`Image resolution doesn't match`)
-                thisEl.attr('data-value', '')
-                thisEl.val('')
-                parent.children('.image-preview').attr('src', imgDefault)
-                addAboutImageValidation()
             }
+        }).catch(err => {
+            alert(err)
+            thisEl.attr('data-value', '')
+            thisEl.val('')
+            parent.children('.image-preview').attr('src', imgDefault)
+            addAboutImageValidation()
         })
     })
 
@@ -199,13 +197,13 @@ $(window).on('load', function () {
                     thisEl.attr('data-value', result)
                     updateAboutImageValidation()
                 }
-            } else if (result == "invalid") {
-                alert(`Image resolution doesn't match`)
-                thisEl.attr('data-value', '')
-                thisEl.val('')
-                parent.children('.image-preview').attr('src', $('#update-about-image-current').val())
-                updateAboutImageValidation()
             }
+        }).catch(err => {
+            alert(err)
+            thisEl.attr('data-value', '')
+            thisEl.val('')
+            parent.children('.image-preview').attr('src', $('#update-about-image-current').val())
+            updateAboutImageValidation()
         })
     })
 

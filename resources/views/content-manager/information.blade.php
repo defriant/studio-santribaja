@@ -20,14 +20,14 @@
                         <input type="text" id="telepon" class="form-control required">
                         <br>
                         <p>Logo</p>
-                        <div class="logo-wrapper">
+                        <div class="logo-wrapper" style="width: 150px; height: 150px">
                             <img src="{{ asset('assets/images/logo.png') }}" class="img-preview">
                             <div class="logo-overlay">
                                 <button class="btn-overlay edit img-btn"><i class="far fa-pen"></i></button>
                             </div>
-                            <input type="file" class="input-file-hidden img-file" id="logo" data-width="500" data-height="500" data-value="" data-accept=".png" accept="image/png">
+                            <input type="file" class="input-file-hidden img-file" id="logo" data-width="200" data-height="200" data-value="" data-accept=".png" accept="image/png">
                         </div>
-                        <p class="text-note">Minimum resolution : 500x500 (Pixel) | File format (.png)</p>
+                        <p class="text-note">Resolution : 200 x 200 (Pixel) | File format (.png)</p>
                         <br>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
             <div class="modal-body" id="add-gallery">
                 <div class="upload-images">
                     <img src="{{ asset('assets/images/grey.jpg') }}" class="image-preview" style="width: 200px; height: 200px" id="add-about-image-preview">
-                    <span>Minimum resolution : 500 x 500 (Pixel)</span>
+                    <span>Resolution : 500 x 500 (Pixel)</span>
                     <button class="btn btn-warning choose-image">Choose image</button>
                     <input type="file" class="choose-image-file required" id="add-about-image" style="display: none;">
                 </div>
@@ -127,7 +127,7 @@
                 <input type="hidden" id="update-about-image-current">
                 <div class="upload-images">
                     <img src="{{ asset('assets/images/grey.jpg') }}" class="image-preview" style="width: 200px; height: 200px" id="update-about-image-preview">
-                    <span>Minimum resolution : 500 x 500 (Pixel)</span>
+                    <span>Resolution : 500 x 500 (Pixel)</span>
                     <button class="btn btn-warning choose-image">Choose image</button>
                     <input type="file" class="choose-image-file required" id="update-about-image" style="display: none;">
                 </div>

@@ -21,13 +21,13 @@ $(window).on('load', function () {
                     thisEl.attr('data-value', result)
                     addGalleryValidate()
                 }
-            } else if (result == "invalid") {
-                alert(`Image resolution doesn't match`)
-                thisEl.attr('data-value', '')
-                thisEl.val('')
-                parent.children('.image-preview').attr('src', imgDefault)
-                addGalleryValidate()
             }
+        }).catch(err => {
+            alert(err)
+            thisEl.attr('data-value', '')
+            thisEl.val('')
+            parent.children('.image-preview').attr('src', imgDefault)
+            addGalleryValidate()
         })
     })
 
@@ -35,11 +35,11 @@ $(window).on('load', function () {
         addGalleryValidate()
     })
 
-    $('#edit-feed-image').on('change', function () {
+    $('#edit-thumbnail-gallery').on('change', function () {
         let thisEl = $(this)
         let parent = $(this).parent()
         let file = this.files[0]
-        displayPreview(file, 400, 400).then(function (result) {
+        displayPreview(file, 400, 200).then(function (result) {
             if (result == "valid") {
                 let fileReader = new FileReader()
                 fileReader.readAsDataURL(file)
@@ -48,11 +48,11 @@ $(window).on('load', function () {
                     parent.children('.image-preview').attr('src', result)
                     thisEl.attr('data-value', result)
                 }
-            } else if (result == "invalid") {
-                alert(`Image resolution doesn't match`)
-                thisEl.attr('data-value', '')
-                thisEl.val('')
             }
+        }).catch(err => {
+            alert(err)
+            thisEl.attr('data-value', '')
+            thisEl.val('')
         })
     })
 

@@ -20,7 +20,7 @@
             </div>
             <div class="col-sm-12 col-md-6" id="main-banner-width">
                 <div class="main-banner-wrapper" id="main-banner-wrapper">
-                    <img src="" class="img-banner" id="img-main-banner">
+                    <img src="" class="img-banner" id="img-main-banner" style="object-fit: cover;">
                     <div class="main-banner-overlay" id="main-banner-overlay">
                         <button class="btn-overlay edit" id="main-banner-edit-choose-file"><i class="far fa-pen"></i></button>
                         <input type="file" id="main-banner-edit-file" class="input-file-hidden">
