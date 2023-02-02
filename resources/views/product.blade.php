@@ -65,7 +65,7 @@
                     <div class="col-sm-12">
                         <div class="upload-images">
                             <img src="{{ asset('assets/images/grey.jpg') }}" class="image-preview category-preview" id="category-image-preview">
-                            <span>Minimum resolution : 525 x 700 (Pixel)</span>
+                            <span>Resolution : 525 x 700 (Pixel)</span>
                             <button class="btn btn-warning choose-image-category">Choose category image</button>
                             <input type="file" class="choose-image-file-category required" id="category-image" style="display: none;">
                         </div>
@@ -104,7 +104,7 @@
                     <div class="col-sm-12">
                         <div class="upload-images">
                             <img src="{{ asset('assets/images/grey.jpg') }}" class="image-preview category-preview" id="update-category-image-preview">
-                            <span>Minimum resolution : 525 x 700 (Pixel)</span>
+                            <span>Resolution : 525 x 700 (Pixel)</span>
                             <button class="btn btn-warning choose-image-update-category">Choose category image</button>
                             <input type="file" class="choose-image-update-file-category required" id="update-category-image" style="display: none;">
                         </div>
@@ -151,7 +151,7 @@
                     <div class="col-12">
                         <div class="upload-images">
                             <img src="{{ asset('assets/images/grey.jpg') }}" class="image-preview">
-                            <span>Minimum resolution : 500 x 500 (Pixel)</span>
+                            <span>Resolution : 500 x 500 (Pixel)</span>
                             <button class="btn btn-warning choose-image">Choose image</button>
                             <input type="file" class="choose-image-file required" id="add-image-1" style="display: none;">
                         </div>
@@ -221,7 +221,7 @@
                     <div class="col-12">
                         <div class="upload-images">
                             <img src="" class="image-preview">
-                            <span>Minimum resolution : 500 x 500 (Pixel)</span>
+                            <span>Resolution : 500 x 500 (Pixel)</span>
                             <button class="btn btn-warning choose-image">Choose image</button>
                             <input type="file" class="choose-image-file required" id="update-image-1" style="display: none;">
                         </div>

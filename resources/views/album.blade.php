@@ -28,7 +28,7 @@
             <div class="panel-body" id="post-album">
                 <div class="upload-images">
                     <img src="{{ asset('assets/images/grey.jpg') }}" class="image-preview post-album" id="add-post-image-preview">
-                    <span>Minimum resolution : 400 x 400 (Pixel)</span>
+                    <span>Resolution : 400 x 400 (Pixel)</span>
                     <button class="btn btn-warning choose-image">Choose poster</button>
                     <input type="file" class="choose-image-file required" id="post-album-image" style="display: none;">
                 </div>

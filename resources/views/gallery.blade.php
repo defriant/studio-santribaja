@@ -45,7 +45,7 @@
             <div class="modal-body" id="add-gallery">
                 <div class="upload-images">
                     <img src="{{ asset('assets/images/grey.jpg') }}" class="image-preview gallery" id="add-thumbnail-gallery-preview">
-                    <span>Minimum resolution : 400 x 200 (Pixel)</span>
+                    <span>Resolution : 400 x 200 (Pixel)</span>
                     <button class="btn btn-warning choose-image">Choose thumbnail</button>
                     <input type="file" class="choose-image-file required" id="add-thumbnail-gallery" style="display: none;">
                 </div>
@@ -68,7 +68,7 @@
                 <input type="hidden" id="edit-gallery-id">
                 <div class="upload-images">
                     <img src="{{ asset('assets/images/grey.jpg') }}" class="image-preview gallery" id="edit-thumbnail-gallery-preview">
-                    <span>400 x 200</span>
+                    <span>Resolution : 400 x 200 (Pixel)</span>
                     <button class="btn btn-warning choose-image">Pilih thumbnail</button>
                     <input type="file" class="choose-image-file" id="edit-thumbnail-gallery" style="display: none;">
                 </div>

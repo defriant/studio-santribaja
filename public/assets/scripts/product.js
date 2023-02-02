@@ -151,13 +151,13 @@ $(window).on('load', function () {
                     thisEl.attr('data-value', result)
                     addProductValidate()
                 }
-            } else if (result == "invalid") {
-                alert(`Image resolution doesn't match`)
-                thisEl.attr('data-value', '')
-                thisEl.val('')
-                parent.children('.image-preview').attr('src', imgDefault)
-                addProductValidate()
             }
+        }).catch(err => {
+            alert(err)
+            thisEl.attr('data-value', '')
+            thisEl.val('')
+            parent.children('.image-preview').attr('src', imgDefault)
+            addProductValidate()
         })
     })
 
@@ -182,6 +182,9 @@ $(window).on('load', function () {
 
         if (file) {
             const filename = file.name
+            let totalBytes = file.size
+            let sizeMB = Math.floor(totalBytes / 1000000);
+            if (sizeMB >= 5) return alert('File size exceed maximum limit of 5 Mb')
 
             const fileReader = new FileReader()
             fileReader.readAsDataURL(file)
@@ -259,10 +262,8 @@ $(window).on('load', function () {
                     parent.children('.image-preview').attr('src', result)
                     thisEl.attr('data-value', result)
                 }
-            } else if (result == "invalid") {
-                alert(`Image resolution doesn't match`)
             }
-        })
+        }).catch(err => alert(err))
     })
 
     $('.modal-update-product .produk-detail .required').on('input', function () {
@@ -290,6 +291,9 @@ $(window).on('load', function () {
 
         if (file) {
             const filename = file.name
+            let totalBytes = file.size
+            let sizeMB = Math.floor(totalBytes / 1000000);
+            if (sizeMB >= 5) return alert('File size exceeds the maximum limit of 5 Mb')
 
             const fileReader = new FileReader()
             fileReader.readAsDataURL(file)
@@ -412,12 +416,12 @@ $(window).on('load', function () {
                     parent.children('.image-preview').attr('src', result)
                     thisEl.attr('data-value', result)
                 }
-            } else if (result == "invalid") {
-                alert(`Image resolution doesn't match`)
-                thisEl.attr('data-value', '')
-                thisEl.val('')
-                parent.children('.image-preview').attr('src', imgDefault)
             }
+        }).catch(err => {
+            alert(err)
+            thisEl.attr('data-value', '')
+            thisEl.val('')
+            parent.children('.image-preview').attr('src', imgDefault)
         })
     })
 
@@ -439,12 +443,12 @@ $(window).on('load', function () {
                     parent.children('.image-preview').attr('src', result)
                     thisEl.attr('data-value', result)
                 }
-            } else if (result == "invalid") {
-                alert(`Image resolution doesn't match`)
-                thisEl.attr('data-value', '')
-                thisEl.val('')
-                parent.children('.image-preview').attr('src', `${base_url}/assets/images/${$('#current-category-image').val()}`)
             }
+        }).catch(err => {
+            alert(err)
+            thisEl.attr('data-value', '')
+            thisEl.val('')
+            parent.children('.image-preview').attr('src', `${base_url}/assets/images/${$('#current-category-image').val()}`)
         })
     })
 })

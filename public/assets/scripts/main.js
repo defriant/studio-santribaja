@@ -123,17 +123,24 @@ $('.input-number').on('keypress', function (e) {
 
 let _URL = window.URL || window.webkitURL;
 
-function displayPreview(file, width, height) {
+function displayPreview(file, width, height, strict = true) {
     return new Promise((resolve, reject) => {
+        if (!file) resolve("invalid")
         let img = new Image();
         // var sizeKB = file.size / 1024;
+        let totalBytes = file.size;
+        let sizeMB = Math.floor(totalBytes / 1000000);
+        if (sizeMB >= 3) reject('File size exceeds the maximum limit of 3 Mb')
+
         img.src = _URL.createObjectURL(file);
         img.onload = function () {
-            if (img.width >= width && img.height >= height) {
-                resolve("valid")
-            } else {
-                resolve("invalid")
+            if (strict) {
+                if (img.width == width && img.height == height) resolve("valid")
+                reject(`Image resolution doesn't match of${!strict ? ' minimum ' : ' '}${width}x${height}`)
             }
+
+            if (img.width >= width && img.height >= height) resolve("valid")
+            reject(`Image resolution doesn't match of${!strict ? ' minimum ' : ' '}${width}x${height}`)
         }
     })
 }
