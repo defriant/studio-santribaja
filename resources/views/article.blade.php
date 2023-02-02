@@ -27,8 +27,8 @@
             </div>
             <div class="panel-body" id="post-article">
                 <div class="upload-images">
-                    <img src="{{ asset('assets/images/grey.jpg') }}" class="image-preview post-album" id="article-image-preview">
-                    <span>Resolution : 500 x 500 (Pixel)</span>
+                    <img src="{{ asset('assets/images/grey.jpg') }}" class="image-preview post-album" id="article-image-preview" style="width: 340px; height: 170px">
+                    <span>Resolution : 960 x 480 (Pixel)</span>
                     <button class="btn btn-warning choose-image">Choose poster</button>
                     <input type="file" class="choose-image-file required" id="article-image" style="display: none;">
                 </div>
@@ -63,8 +63,8 @@
             <div class="modal-body" id="edit-article">
                 <input type="hidden" id="article-id">
                 <div class="upload-images">
-                    <img src="{{ asset('assets/images/grey.jpg') }}" class="image-preview post-album" id="article-image-preview">
-                    <span>Minimum resolution : 500 x 500 (Pixel)</span>
+                    <img src="{{ asset('assets/images/grey.jpg') }}" class="image-preview post-album" id="article-image-preview" style="width: 400px; height: 200px">
+                    <span>Minimum resolution : 960 x 480 (Pixel)</span>
                     <button class="btn btn-warning choose-image">Choose poster</button>
                     <input type="file" class="choose-image-file" id="article-image" style="display: none;">
                 </div>

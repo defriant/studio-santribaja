@@ -11,7 +11,7 @@ $(window).on('load', function () {
         let thisEl = $(this)
         let parent = $(this).parent()
         let file = this.files[0]
-        displayPreview(file, 500, 500).then(function (result) {
+        displayPreview(file, 960, 480).then(function (result) {
             if (result == "valid") {
                 let fileReader = new FileReader()
                 fileReader.readAsDataURL(file)
@@ -68,7 +68,7 @@ $(window).on('load', function () {
         let thisEl = $(this)
         let parent = $(this).parent()
         let file = this.files[0]
-        displayPreview(file, 500, 500).then(function (result) {
+        displayPreview(file, 960, 480).then(function (result) {
             if (result == "valid") {
                 let fileReader = new FileReader()
                 fileReader.readAsDataURL(file)
@@ -197,7 +197,7 @@ function getArticle() {
             $.each(result.data, function (i, v) {
                 articleData = articleData + `<li>
                                                 <i class="fa fa-comment activity-icon"></i>
-                                                <img src="${base_url}/assets/images/${v.image}" alt="">
+                                                <img src="${base_url}/assets/images/${v.image}" alt="" style="width: 400px; height: 200px">
                                                 <p>${v.description}
                                                     <span class="timestamp">Source : <a href="${v.source}" target="_blank">${v.source}</a></span>
                                                 </p>
