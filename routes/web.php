@@ -28,15 +28,18 @@ Route::middleware('guest')->group(function () {
     Route::get('/', function () {
         return view('login');
     })->name('login');
-});
 
-Route::controller(AuthenticationController::class)->group(function () {
-    Route::post('login-attempt', 'login_attempt');
-    Route::get('logout', 'logout');
-    Route::post('user/change-password', 'change_password');
+    Route::controller(AuthenticationController::class)->group(function () {
+        Route::post('login-attempt', 'login_attempt');
+    });
 });
 
 Route::middleware('auth')->group(function () {
+    Route::controller(AuthenticationController::class)->group(function () {
+        Route::get('logout', 'logout');
+        Route::post('user/change-password', 'change_password');
+    });
+
     Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
