@@ -182,6 +182,11 @@ $(window).on('load', function () {
 
         if (file) {
             const filename = file.name
+            const fileExt = `.${filename.split('.').pop()}`
+            const accept = $(this).attr('accept').replaceAll(' ', '').split(',')
+
+            if (!accept.includes(fileExt)) return alert('File format is not supported')
+
             let totalBytes = file.size
             let sizeMB = Math.floor(totalBytes / 1000000);
             if (sizeMB >= 5) return alert('File size exceed maximum limit of 5 Mb')
@@ -291,6 +296,11 @@ $(window).on('load', function () {
 
         if (file) {
             const filename = file.name
+            const fileExt = `.${filename.split('.').pop()}`
+            const accept = $(this).attr('accept').replaceAll(' ', '').split(',')
+
+            if (!accept.includes(fileExt)) return alert('File format is not supported')
+
             let totalBytes = file.size
             let sizeMB = Math.floor(totalBytes / 1000000);
             if (sizeMB >= 5) return alert('File size exceeds the maximum limit of 5 Mb')
@@ -598,6 +608,7 @@ function getProduct() {
                 $('#update-specification').attr('data-filename', '')
                 $('#update-specification').attr('data-value', '')
 
+                $('#update-specification-download').unbind('click')
                 if (thisEl.data('specification')) {
                     $('#update-specification-download').on('click', function () {
                         window.open(`${base_url}/assets/files/${thisEl.data('specification')}`)
