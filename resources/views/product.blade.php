@@ -194,12 +194,12 @@
 
                     <br>
                     <h5>Specification :</h5>
-                    <div class="input-group" id="add-specification-choose-file" style="cursor: pointer">
+                    <div class="input-group" id="add-specification-choose-file" style="cursor: pointer; margin-bottom: .5rem">
                         <span class="input-group-addon"><i class="fas fa-cloud-upload"></i></span>
                         <input type="text" class="form-control" autocomplete="off" readonly="true" placeholder="Choose file" style="background: #FFF; cursor: pointer">
                     </div>
-                    <input type="file" id="add-specification" style="display: none">
-
+                    <input type="file" id="add-specification" style="display: none" accept=".png, .jpg, .jpeg, .pdf">
+                    <span class="text-notice">File format: .png, .jpg, .jpeg, .pdf</span>
                     <br>
                 </div>
             </div>
@@ -266,13 +266,14 @@
                     <br>
                     <h5>Specification :</h5>
                     <div style="display: flex; align-items: center; gap: 1.5rem">
-                        <div class="input-group" id="update-specification-choose-file" style="cursor: pointer; width: 100%">
+                        <div class="input-group" id="update-specification-choose-file" style="cursor: pointer; width: 100%; margin-bottom: .5rem">
                             <span class="input-group-addon"><i class="fas fa-cloud-upload"></i></span>
                             <input type="text" class="form-control" autocomplete="off" readonly="true" placeholder="Choose file" style="background: #FFF; cursor: pointer">
                         </div>
                         <i class="fas fa-download" style="margin-right: .75rem; cursor: pointer; display: none;" id="update-specification-download"></i>
                     </div>
-                    <input type="file" id="update-specification" style="display: none">
+                    <input type="file" id="update-specification" style="display: none" accept=".png, .jpg, .jpeg, .pdf">
+                    <span class="text-notice">File format: .png, .jpg, .jpeg, .pdf</span>
                 </div>
             </div>
             <div class="modal-footer">
