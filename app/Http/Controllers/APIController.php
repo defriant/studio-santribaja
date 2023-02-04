@@ -27,16 +27,28 @@ class APIController extends Controller
         $visitor = geoip($request->ip());
 
         $isExist = Visitor::where('ip_address', $visitor->ip)->orderBy('created_at', 'DESC')->first();
-        $shouldAddAfter = $isExist ? strtotime('+5 minutes', strtotime($isExist->created_at)) : false;
 
-        if ($shouldAddAfter && $shouldAddAfter <= time()) Visitor::create([
-            'ip_address' => $visitor->ip,
-            'iso_code' => $visitor->iso_code,
-            'country' => $visitor->country,
-            'state' => $visitor->state_name,
-            'city' => $visitor->city,
-            'postal_code' => $visitor->postal_code
-        ]);
+        if ($isExist) {
+            $shouldAddAfter = strtotime('+5 minutes', strtotime($isExist->created_at));
+            if ($shouldAddAfter <= time()) Visitor::create([
+                'ip_address' => $visitor->ip,
+                'iso_code' => $visitor->iso_code,
+                'country' => $visitor->country,
+                'state' => $visitor->state_name,
+                'city' => $visitor->city,
+                'postal_code' => $visitor->postal_code
+            ]);
+        } else {
+            Visitor::create([
+                'ip_address' => $visitor->ip,
+                'iso_code' => $visitor->iso_code,
+                'country' => $visitor->country,
+                'state' => $visitor->state_name,
+                'city' => $visitor->city,
+                'postal_code' => $visitor->postal_code
+            ]);
+        }
+
 
         $data = Information::with('about_images')->find('santribajaindonesia')->toArray();
         $data['about_images'] = array_map(fn ($v) => asset('assets/images/' . $v['filename']), $data['about_images']);
