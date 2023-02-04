@@ -21,7 +21,7 @@
                         <br>
                         <p>Logo</p>
                         <div class="logo-wrapper" style="width: 150px; height: 150px">
-                            <img src="{{ asset('assets/images/logo.png') }}" class="img-preview">
+                            <img src="{{ asset('assets/images/logo.png?v='.filemtime(public_path('assets/images/logo.png'))) }}" class="img-preview">
                             <div class="logo-overlay">
                                 <button class="btn-overlay edit img-btn"><i class="far fa-pen"></i></button>
                             </div>

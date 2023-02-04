@@ -26,7 +26,10 @@ class APIController extends Controller
     {
         $visitor = geoip($request->ip());
 
-        Visitor::create([
+        $isExist = Visitor::where('ip_address', $visitor->ip)->orderBy('created_at', 'DESC')->first();
+        $shouldAddAfter = strtotime('+5 minutes', strtotime($isExist->created_at));
+
+        if ($shouldAddAfter <= time()) Visitor::create([
             'ip_address' => $visitor->ip,
             'iso_code' => $visitor->iso_code,
             'country' => $visitor->country,
