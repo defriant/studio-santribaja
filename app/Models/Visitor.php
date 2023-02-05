@@ -17,6 +17,6 @@ class Visitor extends Model
         "state",
         "city",
         "postal_code",
-        "created_at"
+        "user_agent"
     ];
 }
