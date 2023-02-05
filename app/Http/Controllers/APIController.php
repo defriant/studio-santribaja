@@ -26,17 +26,18 @@ class APIController extends Controller
     {
         $visitor = geoip($request->ip());
 
-        $isExist = Visitor::where('ip_address', $visitor->ip)->orderBy('created_at', 'DESC')->first();
+        $isExist = Visitor::where('ip_address', $visitor->ip)->where('user_agent', $request->header('User-Agent'))->orderBy('created_at', 'DESC')->first();
 
         if ($isExist) {
-            $shouldAddAfter = strtotime('+5 minutes', strtotime($isExist->created_at));
+            $shouldAddAfter = strtotime('+3 minutes', strtotime($isExist->created_at));
             if ($shouldAddAfter <= time()) Visitor::create([
                 'ip_address' => $visitor->ip,
                 'iso_code' => $visitor->iso_code,
                 'country' => $visitor->country,
                 'state' => $visitor->state_name,
                 'city' => $visitor->city,
-                'postal_code' => $visitor->postal_code
+                'postal_code' => $visitor->postal_code,
+                'user_agent' => $request->header('User-Agent')
             ]);
         } else {
             Visitor::create([
@@ -45,7 +46,8 @@ class APIController extends Controller
                 'country' => $visitor->country,
                 'state' => $visitor->state_name,
                 'city' => $visitor->city,
-                'postal_code' => $visitor->postal_code
+                'postal_code' => $visitor->postal_code,
+                'user_agent' => $request->header('User-Agent')
             ]);
         }
 
@@ -55,7 +57,8 @@ class APIController extends Controller
 
         return response()->json([
             'error' => false,
-            'data' => $data
+            'data' => $data,
+            'user_agent' => $request->header('User-Agent')
         ]);
     }
 
