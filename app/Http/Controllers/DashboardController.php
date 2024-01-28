@@ -4,93 +4,129 @@ namespace App\Http\Controllers;
 
 use App\Models\Visitor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
     public function fetch_today_visitor()
     {
+        $visitors = Visitor::all();
+        $firstVisitor = Visitor::orderBy('created_at', 'ASC')->first();
+        $firstVisitor = $firstVisitor ? date('Y-m-d', strtotime($firstVisitor->created_at)) : '2023-01-01';
+        $totalDays = count($this->createDateRange($firstVisitor, date('Y-m-d')));
+        $todayVisits = Visitor::whereDate('created_at', date('Y-m-d'))->count();
+        $averageDaily = $visitors->count() / $totalDays;
+
         $chart = [
             [
                 "from" => "00:00",
-                "to" => "02:00"
+                "to" => "02:00",
+                "total" => Visitor::whereBetween('created_at', [
+                    Carbon::createFromTime(0, 0, 0),
+                    Carbon::createFromTime(2, 0, 0)
+                ])->count(),
+                "average" => (int) (Visitor::whereTime('created_at', '>=', '00:00:00')->whereTime('created_at', '<', '02:00:00')->count() / $totalDays)
             ],
             [
                 "from" => "02:00",
-                "to" => "04:00"
+                "to" => "04:00",
+                "total" => Visitor::whereBetween('created_at', [
+                    Carbon::createFromTime(2, 0, 0),
+                    Carbon::createFromTime(4, 0, 0)
+                ])->count(),
+                "average" => (int) (Visitor::whereTime('created_at', '>=', '02:00:00')->whereTime('created_at', '<', '04:00:00')->count() / $totalDays)
             ],
             [
                 "from" => "04:00",
-                "to" => "06:00"
+                "to" => "06:00",
+                "total" => Visitor::whereBetween('created_at', [
+                    Carbon::createFromTime(4, 0, 0),
+                    Carbon::createFromTime(6, 0, 0)
+                ])->count(),
+                "average" => (int) (Visitor::whereTime('created_at', '>=', '04:00:00')->whereTime('created_at', '<', '06:00:00')->count() / $totalDays)
             ],
             [
                 "from" => "06:00",
-                "to" => "08:00"
+                "to" => "08:00",
+                "total" => Visitor::whereBetween('created_at', [
+                    Carbon::createFromTime(6, 0, 0),
+                    Carbon::createFromTime(8, 0, 0)
+                ])->count(),
+                "average" => (int) (Visitor::whereTime('created_at', '>=', '06:00:00')->whereTime('created_at', '<', '08:00:00')->count() / $totalDays)
             ],
             [
                 "from" => "08:00",
-                "to" => "10:00"
+                "to" => "10:00",
+                "total" => Visitor::whereBetween('created_at', [
+                    Carbon::createFromTime(8, 0, 0),
+                    Carbon::createFromTime(10, 0, 0)
+                ])->count(),
+                "average" => (int) (Visitor::whereTime('created_at', '>=', '08:00:00')->whereTime('created_at', '<', '10:00:00')->count() / $totalDays)
             ],
             [
                 "from" => "10:00",
-                "to" => "12:00"
+                "to" => "12:00",
+                "total" => Visitor::whereBetween('created_at', [
+                    Carbon::createFromTime(10, 0, 0),
+                    Carbon::createFromTime(12, 0, 0)
+                ])->count(),
+                "average" => (int) (Visitor::whereTime('created_at', '>=', '10:00:00')->whereTime('created_at', '<', '12:00:00')->count() / $totalDays)
             ],
             [
                 "from" => "12:00",
-                "to" => "14:00"
+                "to" => "14:00",
+                "total" => Visitor::whereBetween('created_at', [
+                    Carbon::createFromTime(12, 0, 0),
+                    Carbon::createFromTime(14, 0, 0)
+                ])->count(),
+                "average" => (int) (Visitor::whereTime('created_at', '>=', '12:00:00')->whereTime('created_at', '<', '14:00:00')->count() / $totalDays)
             ],
             [
                 "from" => "14:00",
-                "to" => "16:00"
+                "to" => "16:00",
+                "total" => Visitor::whereBetween('created_at', [
+                    Carbon::createFromTime(14, 0, 0),
+                    Carbon::createFromTime(16, 0, 0)
+                ])->count(),
+                "average" => (int) (Visitor::whereTime('created_at', '>=', '14:00:00')->whereTime('created_at', '<', '16:00:00')->count() / $totalDays)
             ],
             [
                 "from" => "16:00",
-                "to" => "18:00"
+                "to" => "18:00",
+                "total" => Visitor::whereBetween('created_at', [
+                    Carbon::createFromTime(16, 0, 0),
+                    Carbon::createFromTime(18, 0, 0)
+                ])->count(),
+                "average" => (int) (Visitor::whereTime('created_at', '>=', '16:00:00')->whereTime('created_at', '<', '18:00:00')->count() / $totalDays)
             ],
             [
                 "from" => "18:00",
-                "to" => "20:00"
+                "to" => "20:00",
+                "total" => Visitor::whereBetween('created_at', [
+                    Carbon::createFromTime(18, 0, 0),
+                    Carbon::createFromTime(20, 0, 0)
+                ])->count(),
+                "average" => (int) (Visitor::whereTime('created_at', '>=', '18:00:00')->whereTime('created_at', '<', '20:00:00')->count() / $totalDays)
             ],
             [
                 "from" => "20:00",
-                "to" => "22:00"
+                "to" => "22:00",
+                "total" => Visitor::whereBetween('created_at', [
+                    Carbon::createFromTime(20, 0, 0),
+                    Carbon::createFromTime(22, 0, 0)
+                ])->count(),
+                "average" => (int) (Visitor::whereTime('created_at', '>=', '20:00:00')->whereTime('created_at', '<', '22:00:00')->count() / $totalDays)
             ],
             [
                 "from" => "22:00",
-                "to" => "24:00"
+                "to" => "24:00",
+                "total" => Visitor::whereBetween('created_at', [
+                    Carbon::createFromTime(22, 0, 0),
+                    Carbon::createFromTime(23, 59, 59)
+                ])->count(),
+                "average" => (int) (Visitor::whereTime('created_at', '>=', '22:00:00')->whereTime('created_at', '<', '23:59:59')->count() / $totalDays)
             ],
         ];
-
-        $visitors = Visitor::all();
-        $firstVisitor = Visitor::orderBy('created_at', 'ASC')->first();
-        $firstVisitor = $firstVisitor ? date('Y-m-d H:i:s', strtotime($firstVisitor->created_at)) : date('2023-01-01 00:00:00');
-
-        $daily = $this->createDateRange(date('Y-m-d', strtotime($firstVisitor)), date('Y-m-d'));
-
-        foreach ($visitors as $v) {
-            $date = date('Y-m-d', strtotime($v->created_at));
-            $cek = array_search($date, $daily);
-            if ($cek === false) {
-                $daily[] = $date;
-            }
-        }
-
-        foreach ($chart as $key => $value) {
-            $from = date('Y-m-d H:i:s', strtotime(date('Y-m-d') . ' ' . $value["from"]));
-            $to = date('Y-m-d H:i:s', strtotime(date('Y-m-d') . ' ' . $value["to"]));
-            $chart[$key]["total"] = Visitor::whereBetween('created_at', [$from, $to])->count();
-            $avg = 0;
-            foreach ($daily as $d) {
-                $from = date('Y-m-d H:i:s', strtotime(date('Y-m-d', strtotime($d)) . ' ' . $value["from"]));
-                $to = date('Y-m-d H:i:s', strtotime(date('Y-m-d', strtotime($d)) . ' ' . $value["to"]));
-                $avg = $avg + Visitor::whereBetween('created_at', [$from, $to])->count();
-            }
-
-            $chart[$key]["average"] = intval($avg / count($daily));
-        }
-
-        $todayVisits = Visitor::whereDate('created_at', date('Y-m-d'))->count();
-
-        $averageDaily = $visitors->count() / count($daily);
 
         return [
             "chart" => $chart,
