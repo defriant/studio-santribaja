@@ -308,9 +308,9 @@ function visitorUpdate() {
                     todayDataset.push(null);
                 } else {
                     todayDataset.push(v.total);
+                    avgDataset.push(v.average);
                 }
 
-                avgDataset.push(v.average);
                 if (v.total > dailyHighest) {
                     dailyHighest = v.total;
                 }
